@@ -18,7 +18,6 @@ from core.interleaving import InterleavingPhase
 from core.integrated_testing import IntegratedTestingPhase
 from database.student_database import StudentDatabase
 from utils.progress_tracker import ProgressTracker
-from utils.gemini_client import GeminiClient
 
 class TeachingMode(Enum):
     """Teaching modes based on user performance"""
@@ -1338,9 +1337,6 @@ class SimpleTeachingOrchestrator:
         """Run Phase 1: Priming"""
         print("\n📘 PHASE 1: PRIMING")
         
-        # Create priming phase
-        from core.priming_phase import PrimingPhase
-        
         priming = PrimingPhase(self.client, self.topic)
         result = priming.execute_priming_phase()
         
@@ -1361,8 +1357,6 @@ class SimpleTeachingOrchestrator:
     def _run_relational_thinking(self):
         """Run Phase 2: Relational Thinking"""
         print("\n🔍 PHASE 2: RELATIONAL THINKING")
-        
-        from core.relational_thinking import RelationalThinkingPhase
         
         relational = RelationalThinkingPhase(
             gemini_client=self.client,
