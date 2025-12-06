@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tutor - Premium Workspace</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Monaco Editor (VS Code) Loader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.js"></script>
+    
+    <!-- SortableJS for Drag and Drop -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+    
+    <!-- Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="dark-theme">
+    <div class="app-container">
+        <!-- Header -->
+        <header class="glass-header">
+            <div class="logo">
+                <i class="ri-brain-line"></i>
+                <span>AI Tutor</span>
+            </div>
+            <div class="controls">
+                <button id="theme-toggle" class="icon-btn"><i class="ri-moon-line"></i></button>
+                <div class="user-badge">
+                    <div class="avatar">Y</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Workspace (Draggable Columns) -->
+        <main id="workspace-grid" class="workspace-grid">
+            
+            <!-- Column 1: Chat -->
+            <div class="panel glass-panel" id="panel-chat" data-id="chat">
+                <div class="panel-header drag-handle">
+                    <div class="panel-title">
+                        <i class="ri-chat-4-line"></i> AI Mentor
+                    </div>
+                    <div class="panel-actions">
+                        <button class="icon-btn sm"><i class="ri-drag-move-2-line"></i></button>
+                    </div>
+                </div>
+                <div class="panel-content chat-container" id="chat-messages">
+                    <div class="message ai">
+                        <div class="message-content">
+                            Hello! I'm your AI Tutor. We are currently in <strong>Phase 4: Integrated Testing</strong>. Ready to solve some problems?
+                        </div>
+                    </div>
+                    <!-- Messages will be injected here -->
+                </div>
+                <div class="panel-footer chat-input-area">
+                    <textarea id="user-input" placeholder="Type your answer or ask a question..."></textarea>
+                    <button id="send-btn" class="primary-btn"><i class="ri-send-plane-fill"></i></button>
+                </div>
+            </div>
+
+            <!-- Column 2: IDE -->
+            <div class="panel glass-panel" id="panel-ide" data-id="ide">
+                <div class="panel-header drag-handle">
+                    <div class="panel-title">
+                        <i class="ri-code-s-slash-line"></i> Code Editor
+                    </div>
+                    <div class="panel-actions">
+                        <button id="run-code-btn" class="action-btn"><i class="ri-play-fill"></i> Run</button>
+                    </div>
+                </div>
+                <div class="panel-content" id="editor-container">
+                    <!-- Monaco Editor injected here -->
+                </div>
+            </div>
+
+            <!-- Column 3: Preview -->
+            <div class="panel glass-panel" id="panel-preview" data-id="preview">
+                <div class="panel-header drag-handle">
+                    <div class="panel-title">
+                        <i class="ri-eye-line"></i> Live Preview
+                    </div>
+                    <div class="panel-actions">
+                        <button class="icon-btn sm"><i class="ri-refresh-line"></i></button>
+                    </div>
+                </div>
+                <div class="panel-content preview-container">
+                    <iframe id="preview-frame" sandbox="allow-scripts" title="Preview"></iframe>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/layout.js" type="module"></script>
+    <script src="js/editor.js" type="module"></script>
+    <script src="js/app.js" type="module"></script>
+</body>
+</html>

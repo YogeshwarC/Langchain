@@ -1,0 +1,19 @@
+{
+  "web_user_1": [
+    {
+      "timestamp": "2025-12-06T13:37:50.512250",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "web_user_1": {
+    "profile": {},
+    "sessions": [
+      {
+        "session_id": "session_1765008470_web_user_1",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T13:37:50.512250",
+        "status": "active"
+      }
+    ]
+  }
+}
