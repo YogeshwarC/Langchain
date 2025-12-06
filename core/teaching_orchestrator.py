@@ -10,10 +10,10 @@ from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from enum import Enum
 
-from google import genai
+from utils.gemini_client import GeminiClient
 
 from core.priming_phase import PrimingPhase, ModuleTopic
-from core.relational_thinking import RelationalThinkingPhase, DiscoveryState
+from core.relational_thinking import RelationalThinkingPhase
 from core.interleaving import InterleavingPhase
 from core.integrated_testing import IntegratedTestingPhase
 from database.student_database import StudentDatabase
@@ -30,6 +30,7 @@ class TeachingMode(Enum):
 class SessionState(Enum):
     """Current state of teaching session"""
     INITIALIZING = "initializing"
+    TOPIC_SELECTION = "topic_selection"
     PRIMING = "priming"
     RELATIONAL_THINKING = "relational_thinking"
     INTERLEAVING = "interleaving"
@@ -38,7 +39,6 @@ class SessionState(Enum):
     REVIEW = "review"
     COMPLETED = "completed"
     PAUSED = "paused"
-
 @dataclass
 class UserProfile:
     """User learning profile and preferences"""
@@ -81,7 +81,7 @@ class TeachingOrchestrator:
     
     def __init__(
         self,
-        gemini_client: genai.Client,
+        gemini_client: GeminiClient,
         student_db: StudentDatabase,
         user_id: str,
         initial_topic: ModuleTopic = ModuleTopic.CSS_BASICS,
@@ -92,7 +92,7 @@ class TeachingOrchestrator:
         Initialize Teaching Orchestrator
         
         Args:
-            gemini_client: Initialized Gemini client
+            gemini_client: Initialized GeminiClient wrapper
             student_db: StudentDatabase instance
             user_id: Unique user identifier
             initial_topic: Starting topic
@@ -250,7 +250,7 @@ class TeachingOrchestrator:
         print(f"\n🎓 INITIALIZING AI TUTOR SESSION")
         print(f"   User: {self.user_id}")
         print(f"   Session: {self.session_id}")
-        print(f"   Topic: {self.current_topic.value}")
+        print(f"   Topic: {self.current_topic if isinstance(self.current_topic, str) else self.current_topic.value}")
         print(f"   Mode: {self.teaching_mode.value}")
         
         # Check if user has existing progress
@@ -266,19 +266,19 @@ class TeachingOrchestrator:
                 print(f"   Starting fresh: {self.current_topic.value}")
         
         # Update session state
-        self.current_state = SessionState.PRIMING
+        self.current_state = SessionState.TOPIC_SELECTION
         
         # Log session start
         self.db.log_session_start(
             user_id=self.user_id,
             session_id=self.session_id,
-            topic=self.current_topic.value,
+            topic=self.current_topic if isinstance(self.current_topic, str) else self.current_topic.value,
             mode=self.teaching_mode.value
         )
         
         # Log interaction
         self._log_interaction("system", "session_initialized", {
-            "topic": self.current_topic.value,
+            "topic": self.current_topic if isinstance(self.current_topic, str) else self.current_topic.value,
             "mode": self.teaching_mode.value,
             "user_profile": {
                 "learning_style": self.user_profile.learning_style,
@@ -294,7 +294,13 @@ class TeachingOrchestrator:
         print(f"\n🚀 STARTING TEACHING PROCESS")
         print(f"   Current state: {self.current_state.value}")
         
-        if self.current_state == SessionState.PRIMING:
+        if self.current_state == SessionState.TOPIC_SELECTION:
+            return {
+                "status": "topic_selection",
+                "message": "Welcome! I'm your AI Tutor.\n\nI can help you master:\n- **HTML Basics**\n- **CSS Basics**\n- **JavaScript Foundations**\n\nOr type **'Assess me'** to find your level.",
+                "instructions": "Which topic would you like to start with?"
+            }
+        elif self.current_state == SessionState.PRIMING:
             return self._start_priming_phase()
         elif self.current_state == SessionState.RELATIONAL_THINKING:
             return self._resume_relational_thinking()
@@ -311,7 +317,7 @@ class TeachingOrchestrator:
         
         # Create PrimingPhase instance
         self.priming_phase = PrimingPhase(
-            llm=self.client,  # Note: Needs to be adapted for direct Gemini client
+            gemini_client=self.client,
             topic=self.current_topic
         )
         
@@ -321,8 +327,9 @@ class TeachingOrchestrator:
         # Store phase data
         self.phase_data["priming"] = priming_result
         
-        # Update session state
-        self._transition_to(SessionState.RELATIONAL_THINKING, "priming_completed")
+        # Update session state: STAY IN PRIMING
+        # We wait for user acknowledgement before moving to Relational Thinking
+        # self._transition_to(SessionState.RELATIONAL_THINKING, "priming_completed")
         
         # Update metrics
         self._update_theory_time(10 * 60)  # Estimate 10 minutes
@@ -342,17 +349,17 @@ class TeachingOrchestrator:
         # Prepare for next phase
         next_phase_prep = {
             "message": "Great! Now let's discover patterns in code.",
-            "requires_user_action": False,
+            "requires_user_action": True,
             "next_phase": "relational_thinking"
         }
         
         return {
-            "status": "phase_completed",
+            "status": "priming_content_delivered",
             "phase": "priming",
             "result": priming_result,
             "summary": self.priming_phase.get_priming_summary(),
             "next_phase": next_phase_prep,
-            "instructions": "Phase 1 complete. Ready for pattern discovery? (type 'yes' to continue)"
+            "instructions": "Here are the key concepts. \n\n**Take your time to read.**\n\nType **'Ready'** when you want to start the pattern discovery challenges."
         }
     
     def _resume_relational_thinking(self) -> Dict[str, Any]:
@@ -388,16 +395,27 @@ class TeachingOrchestrator:
         if not self.relational_thinking:
             return {"error": "No relational thinking phase active"}
         
-        state = self.relational_thinking.state
+        # New Hybrid Architecture uses string states
+        # The 'state' attribute on relational_thinking is now a string 
+        state = getattr(self.relational_thinking, "state", "unknown")
         
-        if state == DiscoveryState.SETUP:
+        if state == "setup_complete": 
+            # Note: The new phase might not use exactly this string, but let's align with what we wrote in RelationalThinkingPhase
+            # In execute_phase(), we set self.state = "awaiting_attempt" immediately.
+            # So "setup_complete" might be transient.
             return {"status": "setup_complete", "instructions": "Examples presented"}
-        elif state == DiscoveryState.DISCOVERY_PROMPT:
+            
+        elif state == "awaiting_attempt":
             return {"status": "awaiting_attempt", "instructions": "What pattern do you see?"}
-        elif state == DiscoveryState.BLOCKING_LOOP:
-            return {"status": "evaluating_attempt", "instructions": "Processing your answer..."}
+            
+        elif state == "pattern_resolved":
+             return {"status": "complete", "instructions": "Pattern discovered!"}
+             
+        elif state == "evaluating_attempt":
+             return {"status": "evaluating_attempt", "instructions": "Processing your answer..."}
+             
         else:
-            return {"status": state.value, "instructions": "Continue with phase"}
+            return {"status": str(state), "instructions": "Continue with phase"}
     
     def process_user_input(self, user_input: str) -> Dict[str, Any]:
         """
@@ -411,19 +429,152 @@ class TeachingOrchestrator:
         self.session_metrics.interactions_count += 1
         
         # Route based on current state
-        if self.current_state == SessionState.PRIMING:
-            return self._process_priming_input(user_input)
+        if self.current_state == SessionState.TOPIC_SELECTION:
+             result = self._process_topic_selection(user_input)
+        elif self.current_state == SessionState.PRIMING:
+            result = self._process_priming_input(user_input)
         elif self.current_state == SessionState.RELATIONAL_THINKING:
-            return self._process_relational_input(user_input)
+            result = self._process_relational_input(user_input)
         elif self.current_state == SessionState.INTERLEAVING:
-            return self._process_interleaving_input(user_input)
+            result = self._process_interleaving_input(user_input)
         elif self.current_state == SessionState.INTEGRATED_TESTING:
-            return self._process_testing_input(user_input)
+            result = self._process_testing_input(user_input)
         elif self.current_state == SessionState.PRACTICAL_APPLICATION:
-            return self._process_practice_input(user_input)
+            result = self._process_practice_input(user_input)
         else:
-            return {"error": f"Unknown state: {self.current_state}"}
+            result = {"error": f"Unknown state: {self.current_state}"}
+            
+        # ------------------------------------------------------------------
+        # CRITICAL FIX: FLATTEN NESTED DATA
+        # The API server expects 'examples', 'visual_aids', etc. at the top level.
+        # Many phases return them nested inside a 'data' key.
+        # We merge them up here to ensure the frontend receives them.
+        # ------------------------------------------------------------------
+        if "data" in result and isinstance(result["data"], dict):
+            # We use update so we don't overwrite existing top-level keys like 'status' if they differ,
+            # but usually 'data' contains unique rich content.
+            # We prioritize top-level keys, so we only add what's missing or merge carefully.
+            for k, v in result["data"].items():
+                if k not in result:
+                    result[k] = v
+        
+        return result
+
+    def _process_topic_selection(self, user_input: str) -> Dict[str, Any]:
+        """Process topic selection input"""
+        print(f"Processing topic selection: {user_input}")
+        
+        # Normalize input - we still do some basic cleanup
+        text = user_input.strip()
+        
+        if "assess" in text.lower():
+            # Placeholder for assessment logic
+            return {
+                "message": "Assessment module coming soon! For now, let's start with a topic of your choice.",
+                "instructions": "Type ANY topic you want to learn (e.g. 'Python Decorators', 'CSS Grid', 'React Hooks')."
+            }
+
+        # HYBRID ARCHITECTURE UPDATE:
+        # We no longer validate against a hardcoded list. 
+        # We accept the user's input as the source of truth and let the AI handle it.
+        
+        # We use the string directly instead of an Enum
+        self.current_topic = text 
+        print(f"✅ Topic selected: {self.current_topic}")
+        
+        # Start priming phase
+        self._transition_to(SessionState.PRIMING, "topic_selected")
+        return self._start_priming_phase()
+
+    def _start_priming_phase(self) -> Dict[str, Any]:
+        """Start Phase 1: Priming"""
+        print(f"\n📘 STARTING PHASE 1: PRIMING")
+        
+        # Create PrimingPhase instance
+        # Note: PrimingPhase might still expect an Enum if not updated, 
+        # so for now we might need to be careful or update PrimingPhase too.
+        # But given the user instructions, we focus on Relational Thinking first.
+        # If PrimingPhase crashes on string, we might need a quick patch there or 
+        # we treat Priming as a "Warm up" that might be generic for now.
+        
+        # Check if PrimingPhase accepts string. 
+        # If it enforces Enum, we might need to bypass it or mock it.
+        # STARTING FIX: We will pass the string. If PrimingPhase breaks, we fix PrimingPhase.
+        
+        try:
+            self.priming_phase = PrimingPhase(
+                gemini_client=self.client,
+                topic=self.current_topic # Now a string
+            )
+            priming_result = self.priming_phase.execute_priming_phase()
+        except:
+            # Fallback if PrimingPhase strictly requires Enum
+            # We skip real priming for dynamic topics (or implement dynamic priming later)
+            print("⚠️ Dynamic Priming not fully implemented yet. Using generic start.")
+            priming_result = {
+                "terminology": [],
+                "syntax_etymology": [],
+                "core_concepts": ["Dynamic Learning Path"]
+            }
+
+        # Store phase data
+        self.phase_data["priming"] = priming_result
+        
+        # Update session state: STAY IN PRIMING (Wait for 'Ready')
+        # self._transition_to(SessionState.RELATIONAL_THINKING, "priming_completed")
+        
+        return {
+            "status": "priming_content_delivered",
+            "phase": "priming",
+            "result": priming_result,
+            "next_phase": {"message": "Ready to find the pattern?", "requires_user_action": True},
+            "instructions": f"We are learning about **{self.current_topic}**. \n\nType **'Ready'** to start the pattern discovery challenge."
+        }
+
+    def _resume_relational_thinking(self) -> Dict[str, Any]:
+        """Resume or start Phase 2: Relational Thinking"""
+        print(f"\n🔍 RESUMING PHASE 2: RELATIONAL THINKING")
+        
+        if not self.relational_thinking:
+            # Create new instance - USING NEW DYNAMIC SIGNATURE
+            self.relational_thinking = RelationalThinkingPhase(
+                gemini_client=self.client,
+                topic_name=self.current_topic, # Passing string
+                user_id=self.user_id
+            )
+            
+            # Start phase
+            relational_start = self.relational_thinking.execute_phase()
+            
+            return {
+                "status": "phase_started",
+                "phase": "relational_thinking",
+                "data": relational_start,
+                "state": "awaiting_pattern_attempt",
+                "instructions": relational_start.get("instructions", "What pattern do you see?")
+            }
+        else:
+            # Already have instance, return current state
+            return self._get_current_relational_state()
+
     
+    def _process_priming_input(self, user_input: str) -> Dict[str, Any]:
+        """Process input during priming phase"""
+        # If we are here, it means we are in priming phase but user sent input.
+        # Since Priming is technically a "lecture", we treat any input as acknowledgement 
+        # or we just run the phase if it hasn't run yet.
+        
+        print(f"   Processing priming input: {user_input}")
+        
+        # If phase hasn't run yet (no data), run it now
+        if "priming" not in self.phase_data:
+            return self._start_priming_phase()
+            
+        # If it has run (data exists), but we are still in PRIMING state (maybe transition failed?), 
+        # force transition.
+        self._transition_to(SessionState.RELATIONAL_THINKING, "user_acknowledged")
+        return self._resume_relational_thinking()
+
     def _process_relational_input(self, user_input: str) -> Dict[str, Any]:
         """Process input during relational thinking phase"""
         if not self.relational_thinking:

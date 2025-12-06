@@ -1,6 +1,8 @@
 
 from flask import Flask, render_template_string, request, jsonify
 from core.teaching_orchestrator import TeachingOrchestrator
+from database.student_database import StudentDatabase
+from utils.gemini_client import GeminiClient
 import threading
 import os
 import random
@@ -377,9 +379,16 @@ app = Flask(__name__)
 # In production, use redis or database
 orchestrators = {}
 
+# Global DB
+student_db = StudentDatabase()
+
 def get_orchestrator(user_id, client):
     if user_id not in orchestrators:
-        orchestrators[user_id] = TeachingOrchestrator(client, user_id)
+        orchestrators[user_id] = TeachingOrchestrator(
+            gemini_client=client, 
+            student_db=student_db,
+            user_id=user_id
+        )
     return orchestrators[user_id]
 
 def start_web_server(gemini_client):

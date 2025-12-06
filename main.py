@@ -13,42 +13,29 @@ project_root = Path(__file__).parent
 sys.path.append(str(project_root))
 
 from dotenv import load_dotenv
-from google import genai
-
-from core.teaching_orchestrator import TeachingOrchestrator
-from interfaces.terminal_interface import TerminalInterface
+from utils.gemini_client import GeminiClient
+from database.student_database import StudentDatabase
 from utils.logging_manager import setup_logging
-from database.session_store import SessionManager
 
 def initialize_system():
     """Initialize all system components"""
     
     # 1. Load environment
     load_dotenv()
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        print("❌ Error: GEMINI_API_KEY not found in .env")
-        # For development/testing purposes, we might want to continue or exit. 
-        # Given the previous context, let's print a warning but allow exit.
-        # sys.exit(1)
-        pass # Allow continuing for structure verification tasks if key isn't set yet
     
-    # 2. Initialize Gemini
-    if api_key:
-        gemini_client = genai.Client(api_key=api_key)
-    else:
-        gemini_client = None
+    # 2. Initialize Gemini Client Wrapper
+    gemini_client = GeminiClient()
     
     # 3. Setup logging
     logger = setup_logging()
     
-    # 4. Initialize session manager
-    session_manager = SessionManager()
+    # 4. Initialize Student Database
+    student_db = StudentDatabase()
     
     return {
         "client": gemini_client,
         "logger": logger,
-        "session_manager": session_manager
+        "student_db": student_db
     }
 
 def start_new_session(system_components, user_id=None):
@@ -64,8 +51,7 @@ def start_new_session(system_components, user_id=None):
     orchestrator = TeachingOrchestrator(
         gemini_client=system_components["client"],
         user_id=user_id,
-        session_manager=system_components["session_manager"],
-        logger=system_components["logger"]
+        student_db=system_components["student_db"]
     )
     
     # Start terminal interface
@@ -74,19 +60,13 @@ def start_new_session(system_components, user_id=None):
 
 def resume_session(system_components, user_id):
     """Resume existing session"""
-    session_data = system_components["session_manager"].load_session(user_id)
+    # Check if user exists in DB or just start new session logic that handles resumption
+    # For now, we trust the Orchestrator to handle state loading
     
-    if not session_data:
-        print(f"❌ No session found for {user_id}")
-        return start_new_session(system_components)
-    
-    # Recreate orchestrator with saved state
     orchestrator = TeachingOrchestrator(
         gemini_client=system_components["client"],
         user_id=user_id,
-        session_manager=system_components["session_manager"],
-        logger=system_components["logger"],
-        restore_from=session_data
+        student_db=system_components["student_db"]
     )
     
     terminal = TerminalInterface(orchestrator)
@@ -121,7 +101,7 @@ def main():
         elif choice == "3":
             # Show progress dashboard
             from interfaces.terminal_interface import show_progress_dashboard
-            show_progress_dashboard(system["session_manager"])
+            show_progress_dashboard(system["student_db"])
         elif choice == "4":
             # Configuration menu
             configure_settings(system)

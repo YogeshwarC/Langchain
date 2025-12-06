@@ -14,6 +14,823 @@
       },
       "session_state": "priming",
       "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T14:24:41.006000",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T14:26:19.454021",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T14:27:10.971398",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Hi"
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T14:28:27.330504",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T14:29:15.795714",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Hi"
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T14:32:36.729378",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T14:32:46.305961",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Hi"
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T14:32:46.305961",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "priming",
+        "to": "relational_thinking",
+        "reason": "user_acknowledged",
+        "timestamp": "2025-12-06T14:32:46.305961"
+      },
+      "session_state": "relational_thinking",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T14:33:31.158363",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Hello"
+      },
+      "session_state": "relational_thinking",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T14:40:17.699146",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T14:40:31.407446",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Hi"
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T14:40:31.408588",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "priming",
+        "to": "relational_thinking",
+        "reason": "user_acknowledged",
+        "timestamp": "2025-12-06T14:40:31.408588"
+      },
+      "session_state": "relational_thinking",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T14:46:32.147063",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T14:46:42.901113",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Hi"
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T14:46:42.903117",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "priming",
+        "to": "relational_thinking",
+        "reason": "user_acknowledged",
+        "timestamp": "2025-12-06T14:46:42.903117"
+      },
+      "session_state": "relational_thinking",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:00:16.836819",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:00:29.428271",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "hi"
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:00:29.430282",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "priming",
+        "to": "relational_thinking",
+        "reason": "user_acknowledged",
+        "timestamp": "2025-12-06T15:00:29.430282"
+      },
+      "session_state": "relational_thinking",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:02:02.734987",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Hi"
+      },
+      "session_state": "relational_thinking",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:03:33.994415",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:03:44.984393",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Hi"
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:03:44.985725",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "priming",
+        "to": "relational_thinking",
+        "reason": "user_acknowledged",
+        "timestamp": "2025-12-06T15:03:44.985725"
+      },
+      "session_state": "relational_thinking",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:05:33.073529",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:05:49.504927",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Hiii"
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:05:49.506172",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "priming",
+        "to": "relational_thinking",
+        "reason": "user_acknowledged",
+        "timestamp": "2025-12-06T15:05:49.506172"
+      },
+      "session_state": "relational_thinking",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:09:30.556116",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:09:37.538775",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "hiii"
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:09:37.539980",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "priming",
+        "to": "relational_thinking",
+        "reason": "user_acknowledged",
+        "timestamp": "2025-12-06T15:09:37.539980"
+      },
+      "session_state": "relational_thinking",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:12:20.558708",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:12:27.195383",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "hello"
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:12:27.197838",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "priming",
+        "to": "relational_thinking",
+        "reason": "user_acknowledged",
+        "timestamp": "2025-12-06T15:12:27.197838"
+      },
+      "session_state": "relational_thinking",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:18:38.241963",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:26:14.454002",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:26:36.049349",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Start"
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:26:36.052355",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "priming",
+        "to": "relational_thinking",
+        "reason": "user_acknowledged",
+        "timestamp": "2025-12-06T15:26:36.052355"
+      },
+      "session_state": "relational_thinking",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:30:35.956879",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:30:47.492932",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Start"
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:30:47.495057",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "priming",
+        "to": "relational_thinking",
+        "reason": "user_acknowledged",
+        "timestamp": "2025-12-06T15:30:47.495057"
+      },
+      "session_state": "relational_thinking",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:51:43.675571",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "topic_selection",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:51:54.200277",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Hi"
+      },
+      "session_state": "topic_selection",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:52:30.312486",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "I learned till flexbox concept. But first check if I can knowledge on the pre-requisites."
+      },
+      "session_state": "topic_selection",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:52:36.418237",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "flexbox"
+      },
+      "session_state": "topic_selection",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T16:03:48.451597",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "topic_selection",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T16:04:07.291424",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "g000"
+      },
+      "session_state": "topic_selection",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T16:04:13.268048",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "What?"
+      },
+      "session_state": "topic_selection",
+      "topic": "css_basics"
+    }
+  ],
+  "debug_user": [
+    {
+      "timestamp": "2025-12-06T15:08:46.423880",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:08:46.425967",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Hi"
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:08:46.445139",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "priming",
+        "to": "relational_thinking",
+        "reason": "user_acknowledged",
+        "timestamp": "2025-12-06T15:08:46.445139"
+      },
+      "session_state": "relational_thinking",
+      "topic": "css_basics"
+    }
+  ],
+  "test_user_verification": [
+    {
+      "timestamp": "2025-12-06T15:20:52.489274",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:20:52.490253",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Ready"
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:20:52.513150",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "priming",
+        "to": "relational_thinking",
+        "reason": "user_acknowledged",
+        "timestamp": "2025-12-06T15:20:52.513150"
+      },
+      "session_state": "relational_thinking",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:20:52.574802",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:20:52.593093",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Start"
+      },
+      "session_state": "relational_thinking",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:21:18.314032",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:21:18.316029",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Ready"
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:21:18.341385",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "priming",
+        "to": "relational_thinking",
+        "reason": "user_acknowledged",
+        "timestamp": "2025-12-06T15:21:18.341385"
+      },
+      "session_state": "relational_thinking",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:21:18.403599",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:21:18.425718",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Go"
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:21:18.447952",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "priming",
+        "to": "relational_thinking",
+        "reason": "user_acknowledged",
+        "timestamp": "2025-12-06T15:21:18.447952"
+      },
+      "session_state": "relational_thinking",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:22:05.990441",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:22:05.992438",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Ready"
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:22:06.008512",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "priming",
+        "to": "relational_thinking",
+        "reason": "user_acknowledged",
+        "timestamp": "2025-12-06T15:22:06.008512"
+      },
+      "session_state": "relational_thinking",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:22:06.045069",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:22:06.065794",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Go"
+      },
+      "session_state": "priming",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T15:22:06.082376",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "priming",
+        "to": "relational_thinking",
+        "reason": "user_acknowledged",
+        "timestamp": "2025-12-06T15:22:06.082376"
+      },
+      "session_state": "relational_thinking",
+      "topic": "css_basics"
     }
   ]
 }

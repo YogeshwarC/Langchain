@@ -1,6 +1,6 @@
 
 import os
-from google import genai
+from utils.gemini_client import GeminiClient
 import json
 from datetime import datetime
 from typing import Dict, List, Optional
@@ -113,11 +113,11 @@ class PrimingPhase:
     def _call_gemini(self, prompt: str, model: str = "gemini-1.5-pro-latest") -> str:
         """Helper method to call Gemini API"""
         try:
-            response = self.client.models.generate_content(
+            response = self.client.generate_content(
                 model=model,
                 contents=prompt
             )
-            return response.text
+            return response.text if response else ""
         except Exception as e:
             print(f"❌ Error calling Gemini API: {e}")
             return ""

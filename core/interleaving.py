@@ -10,7 +10,7 @@ from dataclasses import dataclass, field
 from enum import Enum
 from collections import defaultdict
 
-from google import genai
+from utils.gemini_client import GeminiClient
 from google.genai import types
 
 from core.priming_phase import ModuleTopic
@@ -74,7 +74,7 @@ class InterleavingPhase:
     
     def __init__(
         self,
-        gemini_client: genai.Client,
+        gemini_client: GeminiClient,
         topic: ModuleTopic,
         pattern_discovery_data: Dict,  # From Phase 2
         user_id: str,
@@ -226,7 +226,7 @@ class InterleavingPhase:
         """
         
         try:
-            response = self.client.models.generate_content(
+            response = self.client.generate_content(
                 model=self.model,
                 contents=prompt,
                 config=types.GenerateContentConfig(
@@ -325,7 +325,7 @@ class InterleavingPhase:
         """
         
         try:
-            response = self.client.models.generate_content(
+            response = self.client.generate_content(
                 model=self.model,
                 contents=prompt,
                 config=types.GenerateContentConfig(
@@ -481,7 +481,7 @@ class InterleavingPhase:
         """
         
         try:
-            response = self.client.models.generate_content(
+            response = self.client.generate_content(
                 model=self.model,
                 contents=prompt
             )
@@ -564,7 +564,7 @@ class InterleavingPhase:
         """
         
         try:
-            response = self.client.models.generate_content(
+            response = self.client.generate_content(
                 model=self.model,
                 contents=prompt
             )
@@ -740,7 +740,7 @@ class InterleavingPhase:
         """
         
         try:
-            response = self.client.models.generate_content(
+            response = self.client.generate_content(
                 model=self.model,
                 contents=prompt,
                 config=types.GenerateContentConfig(

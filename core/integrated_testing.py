@@ -11,7 +11,7 @@ from dataclasses import dataclass, field
 from enum import Enum
 from datetime import datetime, timedelta
 
-from google import genai
+from utils.gemini_client import GeminiClient
 from google.genai import types
 
 from core.priming_phase import ModuleTopic
@@ -85,7 +85,7 @@ class IntegratedTestingPhase:
     
     def __init__(
         self,
-        gemini_client: genai.Client,
+        gemini_client: GeminiClient,
         topic: ModuleTopic,
         all_phase_data: Dict,  # Combined data from previous 3 phases
         user_id: str,
@@ -423,7 +423,7 @@ class IntegratedTestingPhase:
         """
         
         try:
-            response = self.client.models.generate_content(
+            response = self.client.generate_content(
                 model=self.model,
                 contents=prompt,
                 config=types.GenerateContentConfig(
@@ -760,7 +760,7 @@ class IntegratedTestingPhase:
         """
         
         try:
-            response = self.client.models.generate_content(
+            response = self.client.generate_content(
                 model=self.model,
                 contents=prompt,
                 config=types.GenerateContentConfig(

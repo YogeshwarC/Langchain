@@ -12,19 +12,9 @@ from core.teaching_orchestrator import TeachingOrchestrator, SessionState
 from google import genai
 from utils.gemini_client import GeminiClient
 
-app = FastAPI(title="AI Tutor API")
+from contextlib import asynccontextmanager
 
-# Enable CORS for frontend dev (if running separately, though we serve static now)
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-# Global orchestrator instance (simulated session)
-# In real prod, this would be managed per user/session key
+# Global orchestrator instance
 orchestrator: Optional[TeachingOrchestrator] = None
 
 class ChatRequest(BaseModel):
@@ -35,8 +25,9 @@ class ChatResponse(BaseModel):
     response: str
     data: Optional[Dict] = {}
 
-@app.on_event("startup")
-async def startup_event():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup logic
     global orchestrator
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
@@ -46,7 +37,6 @@ async def startup_event():
         client = genai.Client(api_key=api_key)
     
     # Initialize orchestrator
-    # We might want to delay this until user login in a real app
     from database.student_database import StudentDatabase
     student_db = StudentDatabase()
     
@@ -55,8 +45,20 @@ async def startup_event():
         student_db=student_db,
         user_id="web_user_1"
     )
-    # Start/Prime the session
-    # orchestrator.start_teaching() # Usually starts the first phase
+    yield
+    # Shutdown logic (if any)
+    print("Shutting down AI Tutor API...")
+
+app = FastAPI(title="AI Tutor API", lifespan=lifespan)
+
+# Enable CORS for frontend dev
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/api/chat")
 async def chat_endpoint(request: ChatRequest):
@@ -70,6 +72,41 @@ async def chat_endpoint(request: ChatRequest):
     
     # Normalize response
     response_text = result.get("instructions") or result.get("message") or result.get("feedback") or str(result)
+    
+    # ------------------------------------------------------------------
+    # RICH CONTENT FORMATTING
+    # If the result contains 'examples' (Phase 2), format them as Markdown
+    # ------------------------------------------------------------------
+    if "examples" in result and isinstance(result["examples"], list):
+        examples_md = "\n\n---\n### 🧩 Examples\n"
+        for ex in result["examples"]:
+            # Handle dictionary examples (from RelationalThinking)
+            if isinstance(ex, dict):
+                num = ex.get("number", "")
+                desc = ex.get("description", "")
+                code = ex.get("code_preview", "") or ex.get("code", "")
+                
+                examples_md += f"\n#### Example {num}: {desc}\n"
+                examples_md += f"```css\n{code}\n```\n"
+        
+        response_text += examples_md
+
+    # Append Visual Aids if present
+    if "visual_aids" in result and isinstance(result["visual_aids"], list):
+        visual_md = "\n\n### 🎨 Visual Context\n"
+        for aid in result["visual_aids"]:
+            desc = aid.get("visual_description", "")
+            visual_md += f"- 👁️ {desc}\n"
+        response_text += visual_md
+    
+    # CRITICAL FIX: Append the actual QUESTION or prompt if present
+    # (RelationalThinkingPhase places the main prompt in 'question')
+    if "question" in result and result.get("question"):
+         response_text += f"\n\n**❓ Question:** {result['question']}\n"
+
+    # Append Feedback if strictly defined
+    if "feedback" in result and result.get("feedback") != response_text:
+        response_text += f"\n\n**Feedback:** {result['feedback']}"
     phase = orchestrator.current_state.value if hasattr(orchestrator, 'current_state') else "unknown"
     
     return {

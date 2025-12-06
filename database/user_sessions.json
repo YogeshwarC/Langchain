@@ -8,6 +8,177 @@
         "mode": "guided",
         "start_time": "2025-12-06T13:37:50.512250",
         "status": "active"
+      },
+      {
+        "session_id": "session_1765011281_web_user_1",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T14:24:41.006000",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765011379_web_user_1",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T14:26:19.452951",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765011507_web_user_1",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T14:28:27.330504",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765011756_web_user_1",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T14:32:36.729378",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765012217_web_user_1",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T14:40:17.699146",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765012592_web_user_1",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T14:46:32.147063",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765013416_web_user_1",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T15:00:16.835817",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765013613_web_user_1",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T15:03:33.993415",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765013733_web_user_1",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T15:05:33.073529",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765013970_web_user_1",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T15:09:30.555114",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765014140_web_user_1",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T15:12:20.557705",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765014518_web_user_1",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T15:18:38.241963",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765014974_web_user_1",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T15:26:14.452829",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765015235_web_user_1",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T15:30:35.955880",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765016503_web_user_1",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T15:51:43.674556",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765017228_web_user_1",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T16:03:48.450598",
+        "status": "active"
+      }
+    ]
+  },
+  "debug_user": {
+    "profile": {},
+    "sessions": [
+      {
+        "session_id": "session_1765013926_debug_user",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T15:08:46.423880",
+        "status": "active"
+      }
+    ]
+  },
+  "test_user_verification": {
+    "profile": {},
+    "sessions": [
+      {
+        "session_id": "session_1765014652_test_user_verification",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T15:20:52.488253",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765014652_test_user_verification",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T15:20:52.574802",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765014678_test_user_verification",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T15:21:18.313032",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765014678_test_user_verification",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T15:21:18.402598",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765014725_test_user_verification",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T15:22:05.989444",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765014726_test_user_verification",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T15:22:06.045069",
+        "status": "active"
       }
     ]
   }
