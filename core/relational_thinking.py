@@ -175,12 +175,24 @@ class RelationalThinkingPhase:
              }
 
     def _clean_json(self, text: str) -> str:
-        """Helper to clean markdown ```json ... ``` from responses"""
+        """Helper to clean markdown and extract JSON from responses"""
         text = text.strip()
-        if text.startswith("```json"):
-            text = text[7:]
-        elif text.startswith("```"):
-             text = text[3:]
-        if text.endswith("```"):
-            text = text[:-3]
+        
+        # Remove markdown fences first if present
+        if "```json" in text:
+            parts = text.split("```json")
+            if len(parts) > 1:
+                text = parts[1].split("```")[0]
+        elif "```" in text:
+            parts = text.split("```")
+            if len(parts) > 1:
+                text = parts[1]
+                
+        # Find the first '{' and last '}'
+        start = text.find('{')
+        end = text.rfind('}')
+        
+        if start != -1 and end != -1:
+            return text[start:end+1]
+            
         return text.strip()

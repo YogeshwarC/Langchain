@@ -644,6 +644,209 @@
       },
       "session_state": "topic_selection",
       "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T16:59:07.922254",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "topic_selection",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T16:59:42.722749",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "start"
+      },
+      "session_state": "topic_selection",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T16:59:42.726234",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "topic_selection",
+        "to": "priming",
+        "reason": "topic_selected",
+        "timestamp": "2025-12-06T16:59:42.726234"
+      },
+      "session_state": "priming",
+      "topic": "start"
+    },
+    {
+      "timestamp": "2025-12-06T16:59:47.241835",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Ready"
+      },
+      "session_state": "priming",
+      "topic": "start"
+    },
+    {
+      "timestamp": "2025-12-06T16:59:47.245698",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "priming",
+        "to": "relational_thinking",
+        "reason": "user_acknowledged",
+        "timestamp": "2025-12-06T16:59:47.245698"
+      },
+      "session_state": "relational_thinking",
+      "topic": "start"
+    },
+    {
+      "timestamp": "2025-12-06T17:01:49.774313",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "topic_selection",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T17:02:32.855796",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Start"
+      },
+      "session_state": "topic_selection",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T17:02:32.859612",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "topic_selection",
+        "to": "priming",
+        "reason": "topic_selected",
+        "timestamp": "2025-12-06T17:02:32.859612"
+      },
+      "session_state": "priming",
+      "topic": "Start"
+    },
+    {
+      "timestamp": "2025-12-06T17:02:37.911822",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Ready"
+      },
+      "session_state": "priming",
+      "topic": "Start"
+    },
+    {
+      "timestamp": "2025-12-06T17:02:37.914236",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "priming",
+        "to": "relational_thinking",
+        "reason": "user_acknowledged",
+        "timestamp": "2025-12-06T17:02:37.914236"
+      },
+      "session_state": "relational_thinking",
+      "topic": "Start"
+    },
+    {
+      "timestamp": "2025-12-06T17:02:55.448612",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "There is no examples"
+      },
+      "session_state": "relational_thinking",
+      "topic": "Start"
+    },
+    {
+      "timestamp": "2025-12-06T17:03:06.420696",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "You are not showing any responses to me"
+      },
+      "session_state": "relational_thinking",
+      "topic": "Start"
+    },
+    {
+      "timestamp": "2025-12-06T17:04:44.849135",
+      "actor": "system",
+      "action": "session_initialized",
+      "data": {
+        "topic": "css_basics",
+        "mode": "guided",
+        "user_profile": {
+          "learning_style": "balanced",
+          "pace": "moderate"
+        }
+      },
+      "session_state": "topic_selection",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T17:06:20.588310",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Start"
+      },
+      "session_state": "topic_selection",
+      "topic": "css_basics"
+    },
+    {
+      "timestamp": "2025-12-06T17:06:20.591634",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "topic_selection",
+        "to": "priming",
+        "reason": "topic_selected",
+        "timestamp": "2025-12-06T17:06:20.591634"
+      },
+      "session_state": "priming",
+      "topic": "Start"
+    },
+    {
+      "timestamp": "2025-12-06T17:06:23.110551",
+      "actor": "user",
+      "action": "input",
+      "data": {
+        "text": "Ready"
+      },
+      "session_state": "priming",
+      "topic": "Start"
+    },
+    {
+      "timestamp": "2025-12-06T17:06:23.114718",
+      "actor": "system",
+      "action": "state_transition",
+      "data": {
+        "from": "priming",
+        "to": "relational_thinking",
+        "reason": "user_acknowledged",
+        "timestamp": "2025-12-06T17:06:23.114718"
+      },
+      "session_state": "relational_thinking",
+      "topic": "Start"
     }
   ],
   "debug_user": [

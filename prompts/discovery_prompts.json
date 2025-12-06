@@ -1,11 +1,11 @@
 {
     "identify_pattern": {
-        "template": "You are an expert technical educator. The student wants to learn about '{topic}'.\n\nIdentify the SINGLE most important underlying mental model or 'hidden pattern' a beginner must understand to master this topic.\n\nReturn JSON:\n{\n  \"name\": \"Name of the pattern (e.g. Specificity, Closure, Event Loop)\",\n  \"description\": \"One sentence technical rule\",\n  \"mental_model\": \"A simplified analogy or way to think about it\",\n  \"misconceptions\": [\"List of 3 common beginner mistakes\"]\n}"
+        "template": "You are an expert technical educator. The student wants to learn about '{topic}'.\n\nIdentify the SINGLE most important underlying mental model or 'hidden pattern' a beginner must understand to master this topic.\n\nReturn JSON:\n{{\n  \"name\": \"Name of the pattern (e.g. Specificity, Closure, Event Loop)\",\n  \"description\": \"One sentence technical rule\",\n  \"mental_model\": \"A simplified analogy or way to think about it\",\n  \"misconceptions\": [\"List of 3 common beginner mistakes\"]\n}}"
     },
     "generate_examples": {
-        "template": "Generate 3 code examples to teach the pattern: '{pattern_name}'.\nContext: {pattern_desc}\n\nRULES:\n1. Example 1: Minimal basics.\n2. Example 2: Common use-case.\n3. Example 3: Edge case or complex variation.\n4. All 3 must rely on the SAME underlying logic.\n\nReturn JSON:\n{\n  \"examples\": [\n    {\n      \"code\": \"code string\",\n      \"description\": \"explanation\",\n      \"complexity\": \"beginner/intermediate/advanced\"\n    }\n  ]\n}"
+        "template": "Generate 3 code examples to teach the pattern: '{pattern_name}'.\nContext: {pattern_desc}\n\nRULES:\n1. Example 1: Minimal basics.\n2. Example 2: Common use-case.\n3. Example 3: Edge case or complex variation.\n4. All 3 must rely on the SAME underlying logic.\n\nReturn JSON:\n{{\n  \"examples\": [\n    {{\n      \"code\": \"code string\",\n      \"description\": \"explanation\",\n      \"complexity\": \"beginner/intermediate/advanced\"\n    }}\n  ]\n}}"
     },
     "evaluate_attempt": {
-        "template": "Evaluate student's discovery of the pattern: '{pattern_name}'.\nStudent Answer: \"{user_input}\"\nTarget Mental Model: {mental_model}\n\nScore 0-5.\n- 5: Perfect understanding of the underlying logic.\n- 3: Vague but correct direction.\n- 0: Completely wrong.\n\nReturn JSON:\n{\n  \"score\": 0,\n  \"feedback\": \"Constructive feedback\",\n  \"hint_needed\": boolean\n}"
+        "template": "Evaluate student's discovery of the pattern: '{pattern_name}'.\nStudent Answer: \"{user_input}\"\nTarget Mental Model: {mental_model}\n\nScore 0-5.\n- 5: Perfect understanding of the underlying logic.\n- 3: Vague but correct direction.\n- 0: Completely wrong.\n\nReturn JSON:\n{{\n  \"score\": 0,\n  \"feedback\": \"Constructive feedback\",\n  \"hint_needed\": boolean\n}}"
     }
 }

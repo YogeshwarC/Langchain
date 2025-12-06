@@ -148,6 +148,27 @@
         "mode": "guided",
         "start_time": "2025-12-06T16:51:25.230383",
         "status": "active"
+      },
+      {
+        "session_id": "session_1765020547_web_user_1",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T16:59:07.921255",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765020709_web_user_1",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T17:01:49.773313",
+        "status": "active"
+      },
+      {
+        "session_id": "session_1765020884_web_user_1",
+        "topic": "css_basics",
+        "mode": "guided",
+        "start_time": "2025-12-06T17:04:44.848115",
+        "status": "active"
       }
     ]
   },
