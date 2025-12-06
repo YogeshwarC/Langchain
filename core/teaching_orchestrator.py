@@ -1057,7 +1057,7 @@ class TeachingOrchestrator:
             "action": action,
             "data": data,
             "session_state": self.current_state.value,
-            "topic": self.current_topic.value
+            "topic": self.current_topic.value if hasattr(self.current_topic, "value") else str(self.current_topic)
         }
         
         self.interaction_history.append(interaction)
@@ -1081,7 +1081,7 @@ class TeachingOrchestrator:
             "session_id": self.session_id,
             "user_id": self.user_id,
             "current_state": self.current_state.value,
-            "current_topic": self.current_topic.value,
+            "current_topic": self.current_topic.value if hasattr(self.current_topic, "value") else str(self.current_topic),
             "teaching_mode": self.teaching_mode.value,
             "phase_progress": list(self.phase_data.keys()),
             "metrics": {
